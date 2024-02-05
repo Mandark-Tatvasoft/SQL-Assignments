@@ -9,12 +9,28 @@ group by employee.DeptID, department.DeptName;
 
 /* Q2 */
 select 
-	department.DeptName,
-	count(employee.EmployeeID) as NoOfPeople
+	count(employee.EmpID) as People,
+	department.DeptName
 from department
 inner join employee
 on employee.DeptID = department.DeptID 
-/* where count(employee.EmployeeID) < 3 */
 group by employee.DeptID, department.DeptName
-having NoOfPeople < 3
+having count(employee.EmpID) < 3
 
+/* Q3 */
+select 
+	count(employee.EmpID) as People,
+	department.DeptName
+from department
+inner join employee
+on employee.DeptID = department.DeptID 
+group by employee.DeptID, department.DeptName
+
+/* Q4 */
+select 
+	sum(employee.Salary) as TotalSalary,
+	department.DeptName
+from department
+inner join employee
+on employee.DeptID = department.DeptID 
+group by employee.DeptID, department.DeptName
